@@ -116,6 +116,10 @@ public class MGitHttpConnection implements HttpConnection {
         return wrappedUrlConnection.getHeaderFields();
     }
 
+    public List<String> getHeaderFields(String name) {
+        return wrappedUrlConnection.getHeaderFields(name);
+    }
+
     public void setRequestProperty(String key, String value) {
         wrappedUrlConnection.setRequestProperty(key, value);
     }
@@ -142,10 +146,6 @@ public class MGitHttpConnection implements HttpConnection {
 
     public InputStream getInputStream() throws IOException {
         return wrappedUrlConnection.getInputStream();
-    }
-
-    public Map<String, List<String>> getHeaderFields() {
-        return wrappedUrlConnection.getHeaderFields();
     }
 
     public String getHeaderField(String name) {
