@@ -144,6 +144,10 @@ public class MGitHttpConnection implements HttpConnection {
         return wrappedUrlConnection.getInputStream();
     }
 
+    public Map<String, List<String>> getHeaderFields() {
+        return wrappedUrlConnection.getHeaderFields();
+    }
+
     public String getHeaderField(String name) {
         return wrappedUrlConnection.getHeaderField(name);
     }
