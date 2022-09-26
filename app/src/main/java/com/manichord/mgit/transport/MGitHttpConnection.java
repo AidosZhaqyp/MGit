@@ -57,6 +57,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.List;
+import java.util.LinkedList;
 import java.util.Map;
 
 import javax.net.ssl.HostnameVerifier;
@@ -117,8 +118,19 @@ public class MGitHttpConnection implements HttpConnection {
     }
 
     public List<String> getHeaderFields(String name) {
-        return wrappedUrlConnection.getHeaderFields(name);
+        Map<String, List<String>> m = wrappedUrlConnection.getHeaderFields();
+		List<String> fields = mapValuesToListIgnoreCase(name, m);
+		return fields;
     }
+
+	private static List<String> mapValuesToListIgnoreCase(String keyName,
+			Map<String, List<String>> m) {
+		List<String> fields = new LinkedList<>();
+		m.entrySet().stream().filter(e -> keyName.equalsIgnoreCase(e.getKey()))
+				.filter(e -> e.getValue() != null)
+				.forEach(e -> fields.addAll(e.getValue()));
+		return fields;
+	}
 
     public void setRequestProperty(String key, String value) {
         wrappedUrlConnection.setRequestProperty(key, value);

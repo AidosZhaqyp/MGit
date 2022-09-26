@@ -24,7 +24,7 @@ import android.widget.Toast;
 import com.manichord.mgit.ViewHelperKt;
 import com.manichord.mgit.clone.CloneViewModel;
 import com.manichord.mgit.common.OnActionClickListener;
-import org.eclipse.jgit.transport.JDKHttpConnectionFactory;
+import com.manichord.mgit.transport.MGitHttpConnectionFactory;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -265,7 +265,7 @@ public class RepoListActivity extends SheimiFragmentActivity {
     }
 
     private void initUpdatedSSL() {
-        JDKHttpConnectionFactory.install();
+        MGitHttpConnectionFactory.install();
         Timber.i("Installed custom HTTPS factory");
     }
 
