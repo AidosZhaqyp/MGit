@@ -10,8 +10,6 @@ import org.eclipse.jgit.transport.SshSessionFactory;
  */
 public class SgitTransportCallback implements TransportConfigCallback {
 
-    private SGitSessionFactory ssh;
-
     @Override
     public void configure(Transport tn) {
         if (tn instanceof SshTransport) {
