@@ -165,6 +165,12 @@ public class SheimiFragmentActivity extends AppCompatActivity {
                 new DummyDialogListener());
     }
 
+    public void showMessageDialog(int title, int msg) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(title).setMessage(getString(msg))
+            .setPositiveButton(R.string.label_ok, new DummyDialogListener()).show();
+    }
+
     public void showMessageDialog(int title, String msg, int positiveBtn,
             DialogInterface.OnClickListener positiveListener) {
         showMessageDialog(title, msg, positiveBtn, R.string.label_cancel,
